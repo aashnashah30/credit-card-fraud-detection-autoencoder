@@ -1,16 +1,16 @@
-# Credit Card Fraud Detection using Autoencoders in Keras
+# Credit Card Fraud Detection and Classification Accuracy Verification using Autoencoders in Keras
 
 ## Introduction
 
-This repository contains code for detecting credit card fraud using an autoencoder neural network implemented in Keras. Autoencoders are particularly effective for anomaly detection, as they learn to reconstruct normal data patterns, making fraudulent transactions (anomalies) stand out with higher reconstruction errors.
+This repository contains code for detecting credit card fraud using an autoencoder neural network implemented in Keras. Additionally, it incorporates a mechanism to verify the accuracy of the classification, determining whether the identified fraud is genuinely fraudulent or a false positive. This dual functionality enhances the reliability of the fraud detection system.
 
 The project utilizes the publicly available "Credit Card Fraud Detection" dataset from Kaggle, which is highly imbalanced.
 
 ## Methodology
 
-* **Autoencoder Architecture:** A multi-layer autoencoder is employed. The encoder compresses the input data into a lower-dimensional representation, and the decoder reconstructs the original input from this compressed representation.
-* **Anomaly Detection:** Fraudulent transactions are identified by calculating the reconstruction error (Mean Squared Error) between the original and reconstructed transactions. Transactions with a reconstruction error exceeding a predefined threshold are flagged as potential fraud.
-* **Data Preprocessing:** The numerical features are scaled using `StandardScaler` to ensure consistent input ranges for the neural network.
+* **Autoencoder for Anomaly Detection:** A multi-layer autoencoder is employed to learn the normal patterns of credit card transactions. Fraudulent transactions, being anomalies, exhibit higher reconstruction errors.
+* **Classification Accuracy Verification:** After the autoencoder identifies potential fraud, a separate component analyzes the transactions flagged as fraudulent. This component aims to verify if the classified fraud is indeed a true positive. This may involve further analysis of the reconstruction error patterns, or additional classification or rule based methods.
+* **Data Preprocessing:** Numerical features are scaled using `StandardScaler` to ensure consistent input ranges for the neural network.
 * **Model Training:** The autoencoder is trained using the Adam optimizer and Mean Squared Error (MSE) loss function.
 
 ## Dataset
@@ -26,4 +26,3 @@ The project utilizes the publicly available "Credit Card Fraud Detection" datase
 * Pandas
 * Scikit-learn
 * NumPy
-
